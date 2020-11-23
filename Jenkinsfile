@@ -30,7 +30,7 @@ node {
     def uploadSpec = """{
         "files": [{
                     "pattern": "target/my-app*.jar",
-                    "target": "jenkins-local"
+                    "target": "libs-snapshot-local"
                 }
             ]
         }"""
