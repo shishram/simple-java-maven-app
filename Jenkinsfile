@@ -1,4 +1,7 @@
 node {
+        def server = Artifactory.newServer url: SERVER_URL, credentialsId: CREDENTIALS
+        def rtMaven = Artifactory.newMavenBuild()
+        def buildInfo
     stage('Initialize')
     {
         def dockerHome = tool 'MyDocker'
@@ -15,17 +18,17 @@ node {
 
   stage('publish'){
 
-  def server = Artifactory.server "artifactory"
-    def buildInfo = Artifactory.newBuildInfo()
-    buildInfo.env.capture = true
-    buildInfo.env.collect()
+  //def server = Artifactory.server "artifactory"
+    //def buildInfo = Artifactory.newBuildInfo()
+    /* buildInfo.env.capture = true
+    buildInfo.env.collect() */
     def rtMaven = Artifactory.newMavenBuild()
     rtMaven.tool = "MyMaven" // Tool name from Jenkins configuration
-    rtMaven.opts = "-Denv=dev"
+    //rtMaven.opts = "-Denv=dev"
     rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
     rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
 
-    def buildInfo = rtMaven.run pom: 'pom.xml', goals: '-B -DskipTests clean package -e'
+    buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 
     //buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
     // Publish build info.
