@@ -1,7 +1,4 @@
 node {
-        def server = Artifactory.newServer url: SERVER_URL, credentialsId: CREDENTIALS
-        def rtMaven = Artifactory.newMavenBuild()
-        def buildInfo
     stage('Initialize')
     {
         def dockerHome = tool 'MyDocker'
@@ -18,10 +15,10 @@ node {
 
   stage('publish'){
 
-  //def server = Artifactory.server "artifactory"
-    //def buildInfo = Artifactory.newBuildInfo()
-    /* buildInfo.env.capture = true
-    buildInfo.env.collect() */
+  def server = Artifactory.server "artifactory"
+    def buildInfo = Artifactory.newBuildInfo()
+    buildInfo.env.capture = true
+    buildInfo.env.collect()
     def rtMaven = Artifactory.newMavenBuild()
     rtMaven.tool = "MyMaven" // Tool name from Jenkins configuration
     //rtMaven.opts = "-Denv=dev"
