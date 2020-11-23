@@ -25,7 +25,7 @@ node {
     rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
     rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
 
-    rtMaven.run pom: 'pom.xml', goals: '-B -DskipTests clean package -e', buildInfo: buildInfo
+    rtMaven.run pom: 'pom.xml', goals: 'mvn -B -DskipTests clean package -e', buildInfo: buildInfo
 
     buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
     // Publish build info.
