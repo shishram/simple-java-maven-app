@@ -10,7 +10,7 @@ node {
         sh 'mvn -B -DskipTests clean package -e'
       }
 
-      stage('Build1') {
+      stage('BuildOne') {
              steps {
                script {
                 dir("test")
@@ -38,7 +38,4 @@ node {
                           )
                   }
               }
-
-
-
 }
