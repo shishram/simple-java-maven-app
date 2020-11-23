@@ -25,7 +25,7 @@ node {
                       rtUpload (
                           buildName: JOB_NAME,
                           buildNumber: BUILD_NUMBER,
-                          serverId: http://localhost:8082/artifactory, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                          serverId: artifactory, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
                           spec: '''{
                                     "files": [
                                        {
