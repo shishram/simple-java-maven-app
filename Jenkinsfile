@@ -1,5 +1,4 @@
 node {
-
     stage('Initialize')
     {
         def dockerHome = tool 'MyDocker'
@@ -9,6 +8,6 @@ node {
 
   stage('Build')
        {
-        sh 'mvn -B -DskipTests clean'
+        sh 'mvn -B -DskipTests clean package'
       }
 }
