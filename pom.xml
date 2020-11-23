@@ -48,4 +48,16 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>demo</id>
+      <name>demo-snapshots</name>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <url>http://localhost:8082/artifactory/example-repo-local</url>
+    </repository>
+  </repositories>
+
 </project>
