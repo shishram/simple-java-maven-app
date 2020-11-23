@@ -9,6 +9,6 @@ node {
 
   stage('Build')
        {
-        sh 'mvn -B -DskipTests build'
+        sh 'mvn -B -DskipTests clean'
       }
 }
