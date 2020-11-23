@@ -3,7 +3,8 @@ node {
     {
         def dockerHome = tool 'MyDocker'
         def mavenHome  = tool 'MyMaven'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+        def javaHome  = tool 'MyJava'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${javaHome}/bin:${env.PATH}"
     }
 
   stage('Build')
