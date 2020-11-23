@@ -7,16 +7,8 @@ node {
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 
-    stage('Checkout') 
-    {
-        checkout scm
-    }
-
-      stage('Build') 
-           {
-            sh 'uname -a'
-            sh 'mvn -B -DskipTests clean package'  
-          }
-
-
+  stage('Build')
+       {
+        sh 'mvn -B -DskipTests build'
+      }
 }
