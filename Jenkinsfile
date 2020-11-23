@@ -25,7 +25,7 @@ node {
     rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
     rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
 
-    buildInfo = rtMaven.run pom: 'pom.xml', goals: ''
+    buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean'
 
     //buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
     // Publish build info.
