@@ -12,32 +12,8 @@ node {
         sh 'mvn -B -DskipTests clean package -e'
       }
 
-      stage('publish to artifactory') {
-                steps {
-                  rtUpload (
-                      serverId: "artifactory",
-                      spec:
-                        """{
-                          "files": [
-                            {
-                              "pattern": "target/myapp-*.jar",
-                              "target": "libs-snapshot-local"
-                            }
-                          ]
-                        }""",
-                      failNoOp: true,
-                  )
-                }
-              }
-              stage ('Publish build info') {
-                 steps {
-                    rtPublishBuildInfo (
-                      serverId: "artifactory",
-                     )
-                 }
-              }
 
-  /* stage('publish'){
+  stage('publish'){
 
   def server = Artifactory.server "artifactory"
     def buildInfo = Artifactory.newBuildInfo()
@@ -54,5 +30,5 @@ node {
     buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
     // Publish build info.
     server.publishBuildInfo buildInfo
-  } */
+  }
 }
