@@ -27,8 +27,16 @@ node {
 
     buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean'
 
+    def uploadSpec = """{
+        "files": [{
+                    "pattern": "target/my-app*.jar",
+                    "target": "jenkins-local"
+                }
+            ]
+        }"""
+
     //buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
     // Publish build info.
-    server.publishBuildInfo buildInfo
+    server.upload(uploadSpec)
   }
 }
