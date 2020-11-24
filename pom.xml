@@ -66,6 +66,12 @@
         <inherited>false</inherited>
         <executions>
           <execution>
+            <id>default-deploy</id>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </execution>
+          <execution>
             <id>build-info</id>
             <goals>
               <goal>publish</goal>
