@@ -20,6 +20,18 @@
       <version>3.0.0</version>
       <type>pom</type>
     </dependency>
+
+    <dependency>
+      <groupId>org.jfrog.buildinfo</groupId>
+      <artifactId>build-info-extractor</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jfrog.buildinfo</groupId>
+      <artifactId>build-info-api</artifactId>
+      <version>2.1.2</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
@@ -70,6 +82,12 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>3.6.0</version>
+      </plugin>
     </plugins>
   </build>
 
@@ -79,7 +97,21 @@
   </properties>
 
   <repositories>
+
     <repository>
+      <id>releases</id>
+      <name>jfrog-dependencies</name>
+      <url>https://oss.jfrog.org/artifactory/jfrog-dependencies</url>
+    </repository>
+    <repository>
+      <snapshots/>
+      <id>snapshots</id>
+      <name>libs-snapshot</name>
+      <url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
+    </repository>
+
+
+    <!--<repository>
       <id>demo</id>
       <name>demo-snapshots</name>
       <snapshots>
@@ -100,23 +132,24 @@
       <releases>
         <enabled>false</enabled>
       </releases>
-    </repository>
+    </repository>-->
   </repositories>
+
 
   <pluginRepositories>
     <pluginRepository>
-      <id>central</id>
-      <url>http://localhost:8082/artifactory/libs-snapshot-snapshot</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
+      <id>releases</id>
+      <name>jfrog-dependencies</name>
+      <url>https://oss.jfrog.org/artifactory/jfrog-dependencies</url>
     </pluginRepository>
     <pluginRepository>
+      <snapshots/>
       <id>snapshots</id>
-      <url>http://localhost:8082/artifactory/libs-snapshot-local</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
+      <name>plugins-snapshot</name>
+      <url>https://oss.jfrog.org/artifactory/plugins-snapshot</url>
     </pluginRepository>
   </pluginRepositories>
 
