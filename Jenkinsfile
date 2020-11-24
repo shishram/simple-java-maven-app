@@ -7,7 +7,7 @@ node {
     }
 
   stage('Build'){
-        sh 'mvn -B -DskipTests clean install deploy'
+        sh 'mvn -B -DskipTests clean install package'
     }
 
   /* stage('publish'){
