@@ -12,7 +12,7 @@ node {
 
   stage('publish'){
 
-    def server = Artifactory.server "https://artifactory.axisb.com/artifactory"
+    def server = Artifactory.newServer "https://artifactory.axisb.com/artifactory"
     server.bypassProxy = true
     // If you're using username and password:
     server.username = '177276'
