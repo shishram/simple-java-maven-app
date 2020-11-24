@@ -8,11 +8,15 @@ node {
 
   stage('Build'){
         sh 'mvn -B -DskipTests clean package -e'
-      }
+     }
 
   stage('publish'){
 
-    def server = Artifactory.server "artifactory"
+    def server = Artifactory.server "https://artifactory.axisb.com/artifactory"
+    server.bypassProxy = true
+    // If you're using username and password:
+    server.username = '177276'
+    server.password = 'Axis1234'
     def buildInfo = Artifactory.newBuildInfo()
     buildInfo.env.capture = true
     buildInfo.env.collect()
